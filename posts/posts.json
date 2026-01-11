@@ -77,7 +77,7 @@
     "stm32": {
       "name": "STM32",
       "color": "#e74c3c",
-      "count": 4
+      "count": 5
     },
     "matlab": {
       "name": "Matlab",
