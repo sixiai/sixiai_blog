@@ -134,93 +134,28 @@
             gfm: true
         });
 
-        // 文章数据直接嵌入
-        const postsData = [
-            {
-                "id": "my-new-article",
-                "title": "我的新文章",
-                "date": "2025-01-15",
-                "tags": ["stm32"],
-                "file": "my-new-article.md"
-            },
-            {
-                "id": "stm32-uart-blackbox",
-                "title": "STM32F103C8T6串口黑匣子",
-                "date": "2026-01-04",
-                "tags": ["stm32"],
-                "file": "stm32-uart-blackbox.md"
-            },
-            {
-                "id": "stm32h7-ram-rom",
-                "title": "STM32H7的RAM、ROM分区和注意事项",
-                "date": "2025-11-20",
-                "tags": ["stm32"],
-                "file": "stm32h7-ram-rom.md"
-            },
-            {
-                "id": "stm32-adc-config",
-                "title": "STM32CubeMX的ADC配置（以H7为例）",
-                "date": "2025-11-14",
-                "tags": ["stm32"],
-                "file": "stm32-adc-config.md"
-            },
-            {
-                "id": "matlab-tcp-uart",
-                "title": "Matlab中的TCP和串口(uart)服务",
-                "date": "2025-11-08",
-                "tags": ["matlab"],
-                "file": "matlab-tcp-uart.md"
-            },
-            {
-                "id": "lfm-signal",
-                "title": "认识线性调频信号（LFM）",
-                "date": "2025-10-31",
-                "tags": ["knowledge"],
-                "file": "lfm-signal.md"
-            },
-            {
-                "id": "sbl-positioning",
-                "title": "SBL布阵定位原理",
-                "date": "2025-10-28",
-                "tags": ["knowledge"],
-                "file": "sbl-positioning.md"
-            },
-            {
-                "id": "stm32-iwdg",
-                "title": "STM32的IWDG配置",
-                "date": "2025-10-27",
-                "tags": ["stm32"],
-                "file": "stm32-iwdg.md"
-            },
-            {
-                "id": "blog-test",
-                "title": "四夕的博客测试",
-                "date": "2025-10-27",
-                "tags": ["documentation"],
-                "file": "blog-test.md"
-            }
-        ];
-
         // 获取文章 ID
         const urlParams = new URLSearchParams(window.location.search);
         const postId = urlParams.get('id');
 
-        // 加载文章
+        // 从 posts.json 统一加载文章数据
         async function loadPost() {
             if (!postId) {
                 showError('未指定文章');
                 return;
             }
 
-            // 从嵌入的数据中查找文章信息
-            const postInfo = postsData.find(p => p.id === postId);
-
-            if (!postInfo) {
-                showError('文章不存在');
-                return;
-            }
-
             try {
+                // 从 posts.json 获取文章列表
+                const response = await fetch('posts/posts.json');
+                const data = await response.json();
+                const postInfo = data.posts.find(p => p.id === postId);
+
+                if (!postInfo) {
+                    showError('文章不存在');
+                    return;
+                }
+
                 // 加载 Markdown 文件
                 const mdResponse = await fetch(`posts/${postInfo.file}`);
                 if (!mdResponse.ok) {
