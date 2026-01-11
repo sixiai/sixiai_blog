@@ -4,7 +4,7 @@
       "id": "my-new-article",
       "title": "我的新文章",
       "date": "2025-01-15",
-      "tags": ["stm32"],
+      "tags": ["aicourse"],
       "file": "my-new-article.md",
       "excerpt": "这是文章摘要..."
     },
@@ -77,7 +77,7 @@
     "stm32": {
       "name": "STM32",
       "color": "#e74c3c",
-      "count": 6
+      "count": 4
     },
     "matlab": {
       "name": "Matlab",
