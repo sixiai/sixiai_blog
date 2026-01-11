@@ -94,5 +94,10 @@
       "color": "#9b59b6",
       "count": 1
     }
+    "aicourse": {
+      "name": "AI教程",
+      "color": "#ff6600",
+      "count": 1
+    }
   }
 }
