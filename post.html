@@ -187,7 +187,7 @@
                         <i class="far fa-calendar-alt"></i> ${info.date}
                     </span>
                     <div class="post-tags">
-                        ${info.tags.map(tag => `<span class="tag tag-${tag}">${getTagName(tag)}</span>`).join('')}
+                        ${info.tags.map(tag => `<span class="tag" style="background: ${getTagColor(tag)}20; color: ${getTagColor(tag)}">${getTagName(tag)}</span>`).join('')}
                     </div>
                 </div>
                 <h1 class="post-title">${info.title}</h1>
@@ -268,6 +268,11 @@
         // 获取标签名称（从 tagsConfig 读取）
         function getTagName(tag) {
             return tagsConfig[tag]?.name || tag;
+        }
+
+        // 获取标签颜色（从 tagsConfig 读取）
+        function getTagColor(tag) {
+            return tagsConfig[tag]?.color || '#6366f1';
         }
 
         // 显示错误

@@ -84,12 +84,16 @@
 
     <script src="js/main.js"></script>
     <script>
+        // 存储标签配置
+        let tagsConfig = {};
+
         // 加载归档
         async function loadArchives() {
             try {
                 const response = await fetch('posts/posts.json');
                 const data = await response.json();
                 
+                tagsConfig = data.tags || {};  // 保存标签配置
                 document.getElementById('totalPosts').textContent = data.posts.length;
                 
                 // 按年月分组
@@ -128,7 +132,7 @@
                                 <span class="archive-date">${post.date}</span>
                                 <a href="post.html?id=${post.id}" class="archive-title">${post.title}</a>
                                 <div class="archive-tags">
-                                    ${post.tags.map(tag => `<span class="tag tag-${tag}">${getTagName(tag)}</span>`).join('')}
+                                    ${post.tags.map(tag => `<span class="tag" style="background: ${getTagColor(tag)}20; color: ${getTagColor(tag)}">${getTagName(tag)}</span>`).join('')}
                                 </div>
                             </li>
                         `;
@@ -154,13 +158,11 @@
         }
 
         function getTagName(tag) {
-            const tagNames = {
-                'stm32': 'STM32',
-                'matlab': 'Matlab',
-                'knowledge': '知识',
-                'documentation': '文档'
-            };
-            return tagNames[tag] || tag;
+            return tagsConfig[tag]?.name || tag;
+        }
+
+        function getTagColor(tag) {
+            return tagsConfig[tag]?.color || '#6366f1';
         }
 
         document.addEventListener('DOMContentLoaded', loadArchives);
