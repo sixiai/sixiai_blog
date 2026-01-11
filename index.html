@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>四夕的博客小站</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">
+                <i class="fas fa-code"></i>
+                <span>四夕的博客</span>
+            </a>
+            <div class="nav-menu">
+                <a href="index.html" class="nav-link active">
+                    <i class="fas fa-home"></i> 首页
+                </a>
+                <a href="archives.html" class="nav-link">
+                    <i class="fas fa-archive"></i> 归档
+                </a>
+                <a href="tags.html" class="nav-link">
+                    <i class="fas fa-tags"></i> 标签
+                </a>
+                <a href="about.html" class="nav-link">
+                    <i class="fas fa-user"></i> 关于
+                </a>
+            </div>
+            <div class="nav-actions">
+                <button class="theme-toggle" id="themeToggle" title="切换主题">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <button class="menu-toggle" id="menuToggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero 区域 -->
+    <header class="hero">
+        <div class="hero-content">
+            <div class="hero-avatar">
+                <img src="https://avatars.githubusercontent.com/u/52995168?v=4" alt="Avatar">
+            </div>
+            <h1 class="hero-title">四夕的博客小站</h1>
+            <p class="hero-subtitle">一颗快乐码农 🚀</p>
+            <div class="hero-stats">
+                <div class="stat-item">
+                    <span class="stat-number" id="postCount">8</span>
+                    <span class="stat-label">文章</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number" id="tagCount">4</span>
+                    <span class="stat-label">标签</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">42k+</span>
+                    <span class="stat-label">访问</span>
+                </div>
+            </div>
+            <div class="hero-social">
+                <a href="https://github.com/sixiai" target="_blank" class="social-link">
+                    <i class="fab fa-github"></i>
+                </a>
+            </div>
+        </div>
+        <div class="hero-wave">
+            <svg viewBox="0 0 1440 120" preserveAspectRatio="none">
+                <path d="M0,64 C480,150 960,-20 1440,64 L1440,120 L0,120 Z"></path>
+            </svg>
+        </div>
+    </header>
+
+    <!-- 主内容区 -->
+    <main class="main-content">
+        <div class="container">
+            <!-- 标签筛选 -->
+            <div class="tag-filter">
+                <button class="tag-btn active" data-tag="all">全部</button>
+                <button class="tag-btn" data-tag="stm32">
+                    <i class="fas fa-microchip"></i> STM32
+                </button>
+                <button class="tag-btn" data-tag="matlab">
+                    <i class="fas fa-chart-line"></i> Matlab
+                </button>
+                <button class="tag-btn" data-tag="knowledge">
+                    <i class="fas fa-lightbulb"></i> 知识
+                </button>
+                <button class="tag-btn" data-tag="documentation">
+                    <i class="fas fa-book"></i> 文档
+                </button>
+            </div>
+
+            <!-- 文章列表 -->
+            <div class="posts-grid" id="postsGrid">
+                <!-- 文章卡片将通过 JS 动态加载 -->
+                <div class="loading">
+                    <i class="fas fa-spinner fa-spin"></i>
+                    <span>加载中...</span>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- 页脚 -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-info">
+                    <p>© 2025 四夕的博客小站</p>
+                    <p>转载请注明出处</p>
+                </div>
+                <div class="footer-links">
+                    <a href="https://github.com/sixiai" target="_blank">
+                        <i class="fab fa-github"></i> GitHub
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- 回到顶部 -->
+    <button class="back-to-top" id="backToTop" title="回到顶部">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script src="js/main.js"></script>
+    <script>
+        // 文章数据直接嵌入（避免跨域问题）
+        const postsData = [
+            {
+                "id": "stm32-uart-blackbox",
+                "title": "STM32F103C8T6串口黑匣子",
+                "date": "2026-01-04",
+                "tags": ["stm32"],
+                "file": "stm32-uart-blackbox.md",
+                "excerpt": "串口黑匣子是一个用于记录和调试串口通信数据的工具，本文介绍如何在 STM32F103C8T6 上实现。"
+            },
+            {
+                "id": "stm32h7-ram-rom",
+                "title": "STM32H7的RAM、ROM分区和注意事项",
+                "date": "2025-11-20",
+                "tags": ["stm32"],
+                "file": "stm32h7-ram-rom.md",
+                "excerpt": "STM32H7 系列拥有复杂的内存架构，本文详细介绍其 RAM 和 ROM 的分区及使用注意事项。"
+            },
+            {
+                "id": "stm32-adc-config",
+                "title": "STM32CubeMX的ADC配置（以H7为例）",
+                "date": "2025-11-14",
+                "tags": ["stm32"],
+                "file": "stm32-adc-config.md",
+                "excerpt": "本文介绍如何使用 STM32CubeMX 配置 STM32H7 的 ADC，实现高精度模拟信号采集。"
+            },
+            {
+                "id": "matlab-tcp-uart",
+                "title": "Matlab中的TCP和串口(uart)服务",
+                "date": "2025-11-08",
+                "tags": ["matlab"],
+                "file": "matlab-tcp-uart.md",
+                "excerpt": "在嵌入式开发中，经常需要用 Matlab 与硬件进行通信。本文介绍如何在 Matlab 中实现 TCP 和串口通信。"
+            },
+            {
+                "id": "lfm-signal",
+                "title": "认识线性调频信号（LFM）",
+                "date": "2025-10-31",
+                "tags": ["knowledge"],
+                "file": "lfm-signal.md",
+                "excerpt": "LFM 线性调频信号是一种频率随时间线性变化的信号，广泛应用于雷达、声纳、通信等领域。"
+            },
+            {
+                "id": "sbl-positioning",
+                "title": "SBL布阵定位原理",
+                "date": "2025-10-28",
+                "tags": ["knowledge"],
+                "file": "sbl-positioning.md",
+                "excerpt": "SBL 短基线定位系统是一种水下声学定位技术，通过测量目标信号到达各阵元的时间差计算目标位置。"
+            },
+            {
+                "id": "stm32-iwdg",
+                "title": "STM32的IWDG配置",
+                "date": "2025-10-27",
+                "tags": ["stm32"],
+                "file": "stm32-iwdg.md",
+                "excerpt": "IWDG 独立看门狗是 STM32 内置的硬件看门狗定时器，当程序跑飞时会自动复位 MCU。"
+            },
+            {
+                "id": "blog-test",
+                "title": "四夕的博客测试",
+                "date": "2025-10-27",
+                "tags": ["documentation"],
+                "file": "blog-test.md",
+                "excerpt": "这是我的第一篇博客文章，用于测试博客系统的各项功能。"
+            }
+        ];
+
+        // 加载文章列表
+        function loadPosts() {
+            renderPosts(postsData);
+            setupTagFilter(postsData);
+        }
+
+        // 渲染文章卡片
+        function renderPosts(posts, filterTag = 'all') {
+            const grid = document.getElementById('postsGrid');
+            const filteredPosts = filterTag === 'all' 
+                ? posts 
+                : posts.filter(p => p.tags.includes(filterTag));
+            
+            if (filteredPosts.length === 0) {
+                grid.innerHTML = `
+                    <div class="no-posts">
+                        <i class="fas fa-inbox"></i>
+                        <p>暂无相关文章</p>
+                    </div>
+                `;
+                return;
+            }
+
+            grid.innerHTML = filteredPosts.map((post, index) => `
+                <article class="post-card" style="animation-delay: ${index * 0.1}s" data-tags="${post.tags.join(',')}">
+                    <div class="post-card-header">
+                        <span class="post-date">
+                            <i class="far fa-calendar-alt"></i>
+                            ${post.date}
+                        </span>
+                        <div class="post-tags">
+                            ${post.tags.map(tag => `<span class="tag tag-${tag}">${getTagName(tag)}</span>`).join('')}
+                        </div>
+                    </div>
+                    <h2 class="post-title">
+                        <a href="post.html?id=${post.id}">${post.title}</a>
+                    </h2>
+                    <p class="post-excerpt">${post.excerpt}</p>
+                    <a href="post.html?id=${post.id}" class="read-more">
+                        阅读全文 <i class="fas fa-arrow-right"></i>
+                    </a>
+                </article>
+            `).join('');
+        }
+
+        // 获取标签显示名称
+        function getTagName(tag) {
+            const tagNames = {
+                'stm32': 'STM32',
+                'matlab': 'Matlab',
+                'knowledge': '知识',
+                'documentation': '文档'
+            };
+            return tagNames[tag] || tag;
+        }
+
+        // 设置标签筛选
+        function setupTagFilter(posts) {
+            const tagBtns = document.querySelectorAll('.tag-btn');
+            tagBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    tagBtns.forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    renderPosts(posts, btn.dataset.tag);
+                });
+            });
+        }
+
+        // 页面加载完成后执行
+        document.addEventListener('DOMContentLoaded', loadPosts);
+    </script>
+</body>
+</html>

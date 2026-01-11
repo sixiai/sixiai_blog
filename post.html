@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>文章 - 四夕的博客小站</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Markdown 渲染 -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <!-- 代码高亮 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <!-- 数学公式 -->
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+</head>
+<body>
+    <!-- 阅读进度条 -->
+    <div class="reading-progress" id="readingProgress"></div>
+
+    <!-- 导航栏 -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">
+                <i class="fas fa-code"></i>
+                <span>四夕的博客</span>
+            </a>
+            <div class="nav-menu">
+                <a href="index.html" class="nav-link">
+                    <i class="fas fa-home"></i> 首页
+                </a>
+                <a href="archives.html" class="nav-link">
+                    <i class="fas fa-archive"></i> 归档
+                </a>
+                <a href="tags.html" class="nav-link">
+                    <i class="fas fa-tags"></i> 标签
+                </a>
+                <a href="about.html" class="nav-link">
+                    <i class="fas fa-user"></i> 关于
+                </a>
+            </div>
+            <div class="nav-actions">
+                <button class="theme-toggle" id="themeToggle" title="切换主题">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <button class="menu-toggle" id="menuToggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 文章内容 -->
+    <main class="main-content post-page">
+        <article class="post-container">
+            <!-- 文章头部 -->
+            <header class="post-header" id="postHeader">
+                <div class="loading">
+                    <i class="fas fa-spinner fa-spin"></i>
+                    <span>加载中...</span>
+                </div>
+            </header>
+
+            <!-- 文章正文 -->
+            <div class="post-content markdown-body" id="postContent">
+                <!-- Markdown 内容将渲染到这里 -->
+            </div>
+
+            <!-- 文章底部 -->
+            <footer class="post-footer">
+                <div class="post-nav">
+                    <a href="index.html" class="btn btn-outline">
+                        <i class="fas fa-arrow-left"></i> 返回首页
+                    </a>
+                </div>
+                <div class="post-share">
+                    <span>分享到：</span>
+                    <a href="#" class="share-link" title="分享到微博">
+                        <i class="fab fa-weibo"></i>
+                    </a>
+                    <a href="#" class="share-link" title="分享到Twitter">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                </div>
+            </footer>
+        </article>
+    </main>
+
+    <!-- 页脚 -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-info">
+                    <p>© 2025 四夕的博客小站</p>
+                    <p>转载请注明出处</p>
+                </div>
+                <div class="footer-links">
+                    <a href="https://github.com/sixiai" target="_blank">
+                        <i class="fab fa-github"></i> GitHub
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- 回到顶部 -->
+    <button class="back-to-top" id="backToTop" title="回到顶部">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- 目录侧边栏 -->
+    <aside class="toc-sidebar" id="tocSidebar">
+        <div class="toc-header">
+            <i class="fas fa-list"></i> 目录
+        </div>
+        <nav class="toc-content" id="tocContent">
+            <!-- 目录将通过 JS 生成 -->
+        </nav>
+    </aside>
+
+    <script src="js/main.js"></script>
+    <script>
+        // 配置 marked
+        marked.setOptions({
+            highlight: function(code, lang) {
+                if (lang && hljs.getLanguage(lang)) {
+                    return hljs.highlight(code, { language: lang }).value;
+                }
+                return hljs.highlightAuto(code).value;
+            },
+            breaks: true,
+            gfm: true
+        });
+
+        // 文章数据直接嵌入
+        const postsData = [
+            {
+                "id": "stm32-uart-blackbox",
+                "title": "STM32F103C8T6串口黑匣子",
+                "date": "2026-01-04",
+                "tags": ["stm32"],
+                "file": "stm32-uart-blackbox.md"
+            },
+            {
+                "id": "stm32h7-ram-rom",
+                "title": "STM32H7的RAM、ROM分区和注意事项",
+                "date": "2025-11-20",
+                "tags": ["stm32"],
+                "file": "stm32h7-ram-rom.md"
+            },
+            {
+                "id": "stm32-adc-config",
+                "title": "STM32CubeMX的ADC配置（以H7为例）",
+                "date": "2025-11-14",
+                "tags": ["stm32"],
+                "file": "stm32-adc-config.md"
+            },
+            {
+                "id": "matlab-tcp-uart",
+                "title": "Matlab中的TCP和串口(uart)服务",
+                "date": "2025-11-08",
+                "tags": ["matlab"],
+                "file": "matlab-tcp-uart.md"
+            },
+            {
+                "id": "lfm-signal",
+                "title": "认识线性调频信号（LFM）",
+                "date": "2025-10-31",
+                "tags": ["knowledge"],
+                "file": "lfm-signal.md"
+            },
+            {
+                "id": "sbl-positioning",
+                "title": "SBL布阵定位原理",
+                "date": "2025-10-28",
+                "tags": ["knowledge"],
+                "file": "sbl-positioning.md"
+            },
+            {
+                "id": "stm32-iwdg",
+                "title": "STM32的IWDG配置",
+                "date": "2025-10-27",
+                "tags": ["stm32"],
+                "file": "stm32-iwdg.md"
+            },
+            {
+                "id": "blog-test",
+                "title": "四夕的博客测试",
+                "date": "2025-10-27",
+                "tags": ["documentation"],
+                "file": "blog-test.md"
+            }
+        ];
+
+        // 获取文章 ID
+        const urlParams = new URLSearchParams(window.location.search);
+        const postId = urlParams.get('id');
+
+        // 加载文章
+        async function loadPost() {
+            if (!postId) {
+                showError('未指定文章');
+                return;
+            }
+
+            // 从嵌入的数据中查找文章信息
+            const postInfo = postsData.find(p => p.id === postId);
+
+            if (!postInfo) {
+                showError('文章不存在');
+                return;
+            }
+
+            try {
+                // 加载 Markdown 文件
+                const mdResponse = await fetch(`posts/${postInfo.file}`);
+                if (!mdResponse.ok) {
+                    throw new Error('文章加载失败');
+                }
+                const markdown = await mdResponse.text();
+
+                // 渲染文章
+                renderPost(postInfo, markdown);
+
+            } catch (error) {
+                console.error('加载文章失败:', error);
+                showError('加载文章失败，本地预览请使用 Live Server');
+            }
+        }
+
+        // 渲染文章
+        function renderPost(info, markdown) {
+            // 更新页面标题
+            document.title = `${info.title} - 四夕的博客小站`;
+
+            // 渲染头部
+            document.getElementById('postHeader').innerHTML = `
+                <div class="post-meta">
+                    <span class="post-date">
+                        <i class="far fa-calendar-alt"></i> ${info.date}
+                    </span>
+                    <div class="post-tags">
+                        ${info.tags.map(tag => `<span class="tag tag-${tag}">${getTagName(tag)}</span>`).join('')}
+                    </div>
+                </div>
+                <h1 class="post-title">${info.title}</h1>
+            `;
+
+            // 渲染 Markdown 内容
+            // 移除第一行标题（因为已经在头部显示了）
+            const lines = markdown.split('\n');
+            let startIndex = 0;
+            for (let i = 0; i < lines.length; i++) {
+                if (lines[i].startsWith('# ')) {
+                    startIndex = i + 1;
+                    break;
+                }
+            }
+            // 同时移除元信息行（> 📅 开头的行）
+            while (startIndex < lines.length && (lines[startIndex].trim() === '' || lines[startIndex].startsWith('>'))) {
+                startIndex++;
+            }
+            const contentMarkdown = lines.slice(startIndex).join('\n');
+
+            const htmlContent = marked.parse(contentMarkdown);
+            document.getElementById('postContent').innerHTML = htmlContent;
+
+            // 代码高亮
+            document.querySelectorAll('pre code').forEach((block) => {
+                hljs.highlightElement(block);
+            });
+
+            // 渲染数学公式
+            renderMathInElement(document.getElementById('postContent'), {
+                delimiters: [
+                    {left: '$$', right: '$$', display: true},
+                    {left: '$', right: '$', display: false}
+                ],
+                throwOnError: false
+            });
+
+            // 生成目录
+            generateTOC();
+        }
+
+        // 生成目录
+        function generateTOC() {
+            const content = document.getElementById('postContent');
+            const headings = content.querySelectorAll('h2, h3');
+            const tocContent = document.getElementById('tocContent');
+
+            if (headings.length === 0) {
+                document.getElementById('tocSidebar').style.display = 'none';
+                return;
+            }
+
+            let tocHTML = '<ul>';
+            headings.forEach((heading, index) => {
+                const id = `heading-${index}`;
+                heading.id = id;
+                const level = heading.tagName === 'H2' ? 'toc-h2' : 'toc-h3';
+                tocHTML += `<li class="${level}"><a href="#${id}">${heading.textContent}</a></li>`;
+            });
+            tocHTML += '</ul>';
+
+            tocContent.innerHTML = tocHTML;
+
+            // 目录点击滚动
+            tocContent.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const targetId = link.getAttribute('href').slice(1);
+                    const target = document.getElementById(targetId);
+                    if (target) {
+                        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }
+                });
+            });
+        }
+
+        // 获取标签名称
+        function getTagName(tag) {
+            const tagNames = {
+                'stm32': 'STM32',
+                'matlab': 'Matlab',
+                'knowledge': '知识',
+                'documentation': '文档'
+            };
+            return tagNames[tag] || tag;
+        }
+
+        // 显示错误
+        function showError(message) {
+            document.getElementById('postHeader').innerHTML = '';
+            document.getElementById('postContent').innerHTML = `
+                <div class="error-message">
+                    <i class="fas fa-exclamation-circle"></i>
+                    <h2>出错了</h2>
+                    <p>${message}</p>
+                    <a href="index.html" class="btn btn-primary">返回首页</a>
+                </div>
+            `;
+        }
+
+        // 阅读进度条
+        window.addEventListener('scroll', () => {
+            const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (winScroll / height) * 100;
+            document.getElementById('readingProgress').style.width = scrolled + '%';
+        });
+
+        // 页面加载完成后执行
+        document.addEventListener('DOMContentLoaded', loadPost);
+    </script>
+</body>
+</html>

@@ -1,0 +1,98 @@
+{
+  "posts": [
+    {
+      "id": "my-new-article",
+      "title": "我的新文章",
+      "date": "2025-01-15",
+      "tags": ["stm32"],
+      "file": "my-new-article.md",
+      "excerpt": "这是文章摘要..."
+    },
+    {
+      "id": "stm32-uart-blackbox",
+      "title": "STM32F103C8T6串口黑匣子",
+      "date": "2026-01-04",
+      "tags": ["stm32"],
+      "file": "stm32-uart-blackbox.md",
+      "excerpt": "串口黑匣子是一个用于记录和调试串口通信数据的工具，本文介绍如何在 STM32F103C8T6 上实现。"
+    },
+    {
+      "id": "stm32h7-ram-rom",
+      "title": "STM32H7的RAM、ROM分区和注意事项",
+      "date": "2025-11-20",
+      "tags": ["stm32"],
+      "file": "stm32h7-ram-rom.md",
+      "excerpt": "STM32H7 系列拥有复杂的内存架构，本文详细介绍其 RAM 和 ROM 的分区及使用注意事项。"
+    },
+    {
+      "id": "stm32-adc-config",
+      "title": "STM32CubeMX的ADC配置（以H7为例）",
+      "date": "2025-11-14",
+      "tags": ["stm32"],
+      "file": "stm32-adc-config.md",
+      "excerpt": "本文介绍如何使用 STM32CubeMX 配置 STM32H7 的 ADC，实现高精度模拟信号采集。"
+    },
+    {
+      "id": "matlab-tcp-uart",
+      "title": "Matlab中的TCP和串口(uart)服务",
+      "date": "2025-11-08",
+      "tags": ["matlab"],
+      "file": "matlab-tcp-uart.md",
+      "excerpt": "在嵌入式开发中，经常需要用 Matlab 与硬件进行通信。本文介绍如何在 Matlab 中实现 TCP 和串口通信。"
+    },
+    {
+      "id": "lfm-signal",
+      "title": "认识线性调频信号（LFM）",
+      "date": "2025-10-31",
+      "tags": ["knowledge"],
+      "file": "lfm-signal.md",
+      "excerpt": "LFM 线性调频信号是一种频率随时间线性变化的信号，广泛应用于雷达、声纳、通信等领域。"
+    },
+    {
+      "id": "sbl-positioning",
+      "title": "SBL布阵定位原理",
+      "date": "2025-10-28",
+      "tags": ["knowledge"],
+      "file": "sbl-positioning.md",
+      "excerpt": "SBL 短基线定位系统是一种水下声学定位技术，通过测量目标信号到达各阵元的时间差计算目标位置。"
+    },
+    {
+      "id": "stm32-iwdg",
+      "title": "STM32的IWDG配置",
+      "date": "2025-10-27",
+      "tags": ["stm32"],
+      "file": "stm32-iwdg.md",
+      "excerpt": "IWDG 独立看门狗是 STM32 内置的硬件看门狗定时器，当程序跑飞时会自动复位 MCU。"
+    },
+    {
+      "id": "blog-test",
+      "title": "四夕的博客测试",
+      "date": "2025-10-27",
+      "tags": ["documentation"],
+      "file": "blog-test.md",
+      "excerpt": "这是我的第一篇博客文章，用于测试博客系统的各项功能。"
+    }
+  ],
+  "tags": {
+    "stm32": {
+      "name": "STM32",
+      "color": "#e74c3c",
+      "count": 4
+    },
+    "matlab": {
+      "name": "Matlab",
+      "color": "#3498db",
+      "count": 1
+    },
+    "knowledge": {
+      "name": "知识",
+      "color": "#2ecc71",
+      "count": 2
+    },
+    "documentation": {
+      "name": "文档",
+      "color": "#9b59b6",
+      "count": 1
+    }
+  }
+}

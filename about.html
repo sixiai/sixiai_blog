@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>关于 - 四夕的博客小站</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">
+                <i class="fas fa-code"></i>
+                <span>四夕的博客</span>
+            </a>
+            <div class="nav-menu">
+                <a href="index.html" class="nav-link">
+                    <i class="fas fa-home"></i> 首页
+                </a>
+                <a href="archives.html" class="nav-link">
+                    <i class="fas fa-archive"></i> 归档
+                </a>
+                <a href="tags.html" class="nav-link">
+                    <i class="fas fa-tags"></i> 标签
+                </a>
+                <a href="about.html" class="nav-link active">
+                    <i class="fas fa-user"></i> 关于
+                </a>
+            </div>
+            <div class="nav-actions">
+                <button class="theme-toggle" id="themeToggle" title="切换主题">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <button class="menu-toggle" id="menuToggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 主内容区 -->
+    <main class="main-content">
+        <div class="container">
+            <div class="about-page">
+                <!-- 个人信息卡片 -->
+                <div class="about-card">
+                    <div class="about-avatar">
+                        <img src="https://avatars.githubusercontent.com/u/52995168?v=4" alt="Avatar">
+                    </div>
+                    <h1 class="about-name">四夕</h1>
+                    <p class="about-bio">一颗快乐码农 🚀</p>
+                    <div class="about-social">
+                        <a href="https://github.com/sixiai" target="_blank" class="social-btn">
+                            <i class="fab fa-github"></i> GitHub
+                        </a>
+                    </div>
+                </div>
+
+                <!-- 关于内容 -->
+                <div class="about-content">
+                    <section class="about-section">
+                        <h2><i class="fas fa-user-circle"></i> 关于我</h2>
+                        <p>你好！我是四夕，一名嵌入式软件工程师。</p>
+                        <p>热爱技术，喜欢折腾各种有趣的项目。这个博客主要记录我在工作和学习中的技术笔记，希望能对你有所帮助。</p>
+                    </section>
+
+                    <section class="about-section">
+                        <h2><i class="fas fa-code"></i> 技术栈</h2>
+                        <div class="skill-tags">
+                            <span class="skill-tag"><i class="fas fa-microchip"></i> STM32</span>
+                            <span class="skill-tag"><i class="fas fa-memory"></i> 嵌入式系统</span>
+                            <span class="skill-tag"><i class="fab fa-cuttlefish"></i> C/C++</span>
+                            <span class="skill-tag"><i class="fab fa-python"></i> Python</span>
+                            <span class="skill-tag"><i class="fas fa-chart-line"></i> Matlab</span>
+                            <span class="skill-tag"><i class="fas fa-wave-square"></i> 信号处理</span>
+                            <span class="skill-tag"><i class="fas fa-water"></i> 水声通信</span>
+                        </div>
+                    </section>
+
+                    <section class="about-section">
+                        <h2><i class="fas fa-blog"></i> 关于博客</h2>
+                        <p>这个博客使用纯静态 HTML/CSS/JS 构建，支持 Markdown 写作。</p>
+                        <p>主要特性：</p>
+                        <ul>
+                            <li>✅ 支持 Markdown 文件直接渲染</li>
+                            <li>✅ 代码语法高亮</li>
+                            <li>✅ 数学公式支持 (KaTeX)</li>
+                            <li>✅ 亮色/暗色主题切换</li>
+                            <li>✅ 响应式设计，支持移动端</li>
+                            <li>✅ 文章目录自动生成</li>
+                        </ul>
+                    </section>
+
+                    <section class="about-section">
+                        <h2><i class="fas fa-envelope"></i> 联系我</h2>
+                        <p>如果你有任何问题或建议，欢迎通过以下方式联系我：</p>
+                        <ul>
+                            <li><i class="fab fa-github"></i> GitHub: <a href="https://github.com/sixiai" target="_blank">@sixiai</a></li>
+                        </ul>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- 页脚 -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-info">
+                    <p>© 2025 四夕的博客小站</p>
+                    <p>转载请注明出处</p>
+                </div>
+                <div class="footer-links">
+                    <a href="https://github.com/sixiai" target="_blank">
+                        <i class="fab fa-github"></i> GitHub
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- 回到顶部 -->
+    <button class="back-to-top" id="backToTop" title="回到顶部">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
