@@ -125,9 +125,8 @@
                 let html = '';
                 Object.keys(tagStats).forEach(tag => {
                     const info = tagInfo[tag] || { name: tag, icon: 'fa-tag', color: '#95a5a6' };
-                    const size = Math.min(1 + tagStats[tag] * 0.2, 2);
                     html += `
-                        <button class="tag-cloud-item" data-tag="${tag}" style="--tag-color: ${info.color}; font-size: ${size}rem;">
+                        <button class="tag-cloud-item" data-tag="${tag}" style="--tag-color: ${info.color};">
                             <i class="fas ${info.icon}"></i>
                             ${info.name}
                             <span class="tag-count">${tagStats[tag]}</span>

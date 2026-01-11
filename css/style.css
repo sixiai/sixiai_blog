@@ -920,6 +920,48 @@ img {
     background: rgba(255, 255, 255, 0.2);
 }
 
+/* ==================== 
+   首页标签筛选按钮
+   ==================== */
+.tag-filter {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    justify-content: center;
+    margin-bottom: 40px;
+}
+
+.tag-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 20px;
+    min-height: 44px; /* 固定最小高度，保持一致 */
+    background: var(--card-bg);
+    border: 2px solid var(--border-color);
+    border-radius: 25px;
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.tag-btn:hover {
+    border-color: var(--accent-color);
+    color: var(--accent-color);
+}
+
+.tag-btn.active {
+    background: var(--accent-color);
+    border-color: var(--accent-color);
+    color: white;
+}
+
+.tag-btn i {
+    font-size: 1rem;
+}
+
 /* 标签云容器 */
 .tag-cloud {
     display: flex;
@@ -938,6 +980,7 @@ img {
     border: 2px solid var(--border-color);
     border-radius: 30px;
     font-weight: 600;
+    font-size: 1rem !important; /* 固定字体大小，保持一致 */
     cursor: pointer;
     transition: all 0.3s ease;
     color: var(--text-primary);

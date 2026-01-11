@@ -202,6 +202,16 @@
         function loadPosts() {
             renderPosts(postsData);
             setupTagFilter(postsData);
+            
+            // 自动更新文章数和标签数
+            document.getElementById('postCount').textContent = postsData.length;
+            
+            // 统计标签数量
+            const allTags = new Set();
+            postsData.forEach(post => {
+                post.tags.forEach(tag => allTags.add(tag));
+            });
+            document.getElementById('tagCount').textContent = allTags.size;
         }
 
         // 渲染文章卡片
