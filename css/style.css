@@ -849,6 +849,37 @@ img {
 }
 
 /* ==================== 
+   页面标题头部
+   ==================== */
+.page-header {
+    padding-top: 120px;
+    padding-bottom: 40px;
+    text-align: center;
+    background: var(--bg-secondary);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.page-header h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+}
+
+.page-header h1 i {
+    color: var(--accent-color);
+}
+
+.page-header p {
+    color: var(--text-secondary);
+    font-size: 1rem;
+}
+
+/* ==================== 
    标签页面
    ==================== */
 .tags-cloud {
@@ -887,6 +918,140 @@ img {
 .tag-item:hover .tag-count,
 .tag-item.active .tag-count {
     background: rgba(255, 255, 255, 0.2);
+}
+
+/* 标签云容器 */
+.tag-cloud {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    justify-content: center;
+    padding: 20px 0;
+}
+
+.tag-cloud-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 20px;
+    background: var(--card-bg);
+    border: 2px solid var(--border-color);
+    border-radius: 30px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    color: var(--text-primary);
+}
+
+.tag-cloud-item:hover {
+    border-color: var(--tag-color, var(--accent-color));
+    color: var(--tag-color, var(--accent-color));
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-md);
+}
+
+.tag-cloud-item.active {
+    background: var(--tag-color, var(--accent-color));
+    border-color: var(--tag-color, var(--accent-color));
+    color: white;
+}
+
+.tag-cloud-item i {
+    font-size: 1.1em;
+}
+
+.tag-cloud-item .tag-count {
+    background: var(--bg-tertiary);
+    padding: 2px 10px;
+    border-radius: 12px;
+    font-size: 0.85em;
+    font-weight: 700;
+}
+
+.tag-cloud-item.active .tag-count {
+    background: rgba(255, 255, 255, 0.25);
+}
+
+/* 标签文章列表 */
+.tag-posts {
+    margin-top: 40px;
+}
+
+.tag-posts-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 24px;
+    padding-bottom: 16px;
+    border-bottom: 2px solid var(--border-color);
+}
+
+.tag-posts-header h2 {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+.tag-posts-header h2 i {
+    color: var(--accent-color);
+}
+
+.tag-posts-count {
+    padding: 6px 14px;
+    background: var(--accent-light);
+    color: var(--accent-color);
+    border-radius: 20px;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.tag-posts-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.tag-post-item {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 16px 20px;
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    transition: all 0.3s ease;
+}
+
+.tag-post-item:hover {
+    border-color: var(--accent-color);
+    transform: translateX(8px);
+    box-shadow: var(--shadow-md);
+}
+
+.tag-post-date {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    white-space: nowrap;
+}
+
+.tag-post-title {
+    flex: 1;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.tag-post-item i {
+    color: var(--accent-color);
+    opacity: 0;
+    transition: all 0.3s ease;
+}
+
+.tag-post-item:hover i {
+    opacity: 1;
+    transform: translateX(4px);
 }
 
 /* ==================== 
