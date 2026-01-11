@@ -139,6 +139,8 @@
         const postId = urlParams.get('id');
 
         // 从 posts.json 统一加载文章数据
+        let tagsConfig = {};  // 存储标签配置
+        
         async function loadPost() {
             if (!postId) {
                 showError('未指定文章');
@@ -149,6 +151,7 @@
                 // 从 posts.json 获取文章列表
                 const response = await fetch('posts/posts.json');
                 const data = await response.json();
+                tagsConfig = data.tags || {};  // 保存标签配置
                 const postInfo = data.posts.find(p => p.id === postId);
 
                 if (!postInfo) {
@@ -262,15 +265,9 @@
             });
         }
 
-        // 获取标签名称
+        // 获取标签名称（从 tagsConfig 读取）
         function getTagName(tag) {
-            const tagNames = {
-                'stm32': 'STM32',
-                'matlab': 'Matlab',
-                'knowledge': '知识',
-                'documentation': '文档'
-            };
-            return tagNames[tag] || tag;
+            return tagsConfig[tag]?.name || tag;
         }
 
         // 显示错误

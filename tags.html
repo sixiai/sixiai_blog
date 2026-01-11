@@ -113,22 +113,17 @@
 
                 document.getElementById('totalTags').textContent = Object.keys(tagStats).length;
 
-                // 渲染标签云
+                // 渲染标签云（从 posts.json 的 tags 配置读取）
                 const tagCloud = document.getElementById('tagCloud');
-                const tagInfo = {
-                    'stm32': { name: 'STM32', icon: 'fa-microchip', color: '#e74c3c' },
-                    'matlab': { name: 'Matlab', icon: 'fa-chart-line', color: '#3498db' },
-                    'knowledge': { name: '知识', icon: 'fa-lightbulb', color: '#2ecc71' },
-                    'documentation': { name: '文档', icon: 'fa-book', color: '#9b59b6' }
-                };
+                tagConfig = data.tags || {};  // 保存到全局变量
 
                 let html = '';
                 Object.keys(tagStats).forEach(tag => {
-                    const info = tagInfo[tag] || { name: tag, icon: 'fa-tag', color: '#95a5a6' };
+                    const config = tagConfig[tag] || { name: tag, color: '#95a5a6' };
                     html += `
-                        <button class="tag-cloud-item" data-tag="${tag}" style="--tag-color: ${info.color};">
-                            <i class="fas ${info.icon}"></i>
-                            ${info.name}
+                        <button class="tag-cloud-item" data-tag="${tag}" style="--tag-color: ${config.color};">
+                            <i class="fas fa-tag"></i>
+                            ${config.name}
                             <span class="tag-count">${tagStats[tag]}</span>
                         </button>
                     `;
@@ -156,21 +151,20 @@
             }
         }
 
+        // 存储标签配置
+        let tagConfig = {};
+
         // 显示标签下的文章
         function showTagPosts(tag) {
             const posts = allPosts.filter(p => p.tags.includes(tag));
             const tagPosts = document.getElementById('tagPosts');
 
-            const tagNames = {
-                'stm32': 'STM32',
-                'matlab': 'Matlab',
-                'knowledge': '知识',
-                'documentation': '文档'
-            };
+            // 从 tagConfig 获取标签名称
+            const tagName = tagConfig[tag]?.name || tag;
 
             let html = `
                 <div class="tag-posts-header">
-                    <h2><i class="fas fa-folder-open"></i> ${tagNames[tag] || tag} 相关文章</h2>
+                    <h2><i class="fas fa-folder-open"></i> ${tagName} 相关文章</h2>
                     <span class="tag-posts-count">${posts.length} 篇</span>
                 </div>
                 <div class="tag-posts-list">

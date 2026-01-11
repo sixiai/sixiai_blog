@@ -131,11 +131,14 @@
     <script src="js/main.js"></script>
     <script>
         // 从 posts.json 统一加载文章数据
+        let tagsConfig = {};  // 存储标签配置
+        
         async function loadPosts() {
             try {
                 const response = await fetch('posts/posts.json');
                 const data = await response.json();
                 const postsData = data.posts;
+                tagsConfig = data.tags || {};  // 保存标签配置
                 
                 renderPosts(postsData);
                 setupTagFilter(postsData);
@@ -194,15 +197,9 @@
             `).join('');
         }
 
-        // 获取标签显示名称
+        // 获取标签显示名称（从 tagsConfig 读取）
         function getTagName(tag) {
-            const tagNames = {
-                'stm32': 'STM32',
-                'matlab': 'Matlab',
-                'knowledge': '知识',
-                'documentation': '文档'
-            };
-            return tagNames[tag] || tag;
+            return tagsConfig[tag]?.name || tag;
         }
 
         // 设置标签筛选
