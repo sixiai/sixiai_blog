@@ -1,7 +1,7 @@
 {
   "posts": [
     {
-      "id": "my-new-article",
+      "id": "my_new_article",
       "title": "我的新文章",
       "date": "2025-01-15",
       "tags": ["stm32"],
