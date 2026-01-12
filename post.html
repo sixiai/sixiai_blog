@@ -175,6 +175,45 @@
             }
         }
 
+        // 保护数学公式不被 marked.js 处理
+        function protectMath(text) {
+            const mathBlocks = [];
+            let index = 0;
+            
+            // 先保护块级公式 $$...$$
+            text = text.replace(/\$\$([\s\S]*?)\$\$/g, (match, formula) => {
+                mathBlocks.push({ type: 'block', content: formula });
+                return `%%MATH_BLOCK_${index++}%%`;
+            });
+            
+            // 再保护行内公式 $...$（但不匹配 $$）
+            text = text.replace(/\$([^\$\n]+?)\$/g, (match, formula) => {
+                mathBlocks.push({ type: 'inline', content: formula });
+                return `%%MATH_INLINE_${index++}%%`;
+            });
+            
+            return { text, mathBlocks };
+        }
+        
+        // 还原数学公式
+        function restoreMath(html, mathBlocks) {
+            let index = 0;
+            
+            // 还原块级公式
+            html = html.replace(/%%MATH_BLOCK_(\d+)%%/g, (match, i) => {
+                const block = mathBlocks[parseInt(i)];
+                return `$$${block.content}$$`;
+            });
+            
+            // 还原行内公式
+            html = html.replace(/%%MATH_INLINE_(\d+)%%/g, (match, i) => {
+                const block = mathBlocks[parseInt(i)];
+                return `$${block.content}$`;
+            });
+            
+            return html;
+        }
+
         // 渲染文章
         function renderPost(info, markdown) {
             // 更新页面标题
@@ -209,7 +248,15 @@
             }
             const contentMarkdown = lines.slice(startIndex).join('\n');
 
-            const htmlContent = marked.parse(contentMarkdown);
+            // 保护数学公式，防止被 marked.js 破坏
+            const { text: protectedMarkdown, mathBlocks } = protectMath(contentMarkdown);
+            
+            // 渲染 Markdown
+            let htmlContent = marked.parse(protectedMarkdown);
+            
+            // 还原数学公式
+            htmlContent = restoreMath(htmlContent, mathBlocks);
+            
             document.getElementById('postContent').innerHTML = htmlContent;
 
             // 代码高亮

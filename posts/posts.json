@@ -1,6 +1,14 @@
 {
   "posts": [
     {
+      "id": "my-new-article",
+      "title": "我的新文章",
+      "date": "2025-01-15",
+      "tags": ["aicourse"],
+      "file": "my-new-article.md",
+      "excerpt": "这是文章摘要..."
+    },
+    {
       "id": "stm32-uart-blackbox",
       "title": "STM32F103C8T6串口黑匣子",
       "date": "2026-01-04",
@@ -63,14 +71,6 @@
       "tags": ["documentation"],
       "file": "blog-test.md",
       "excerpt": "这是我的第一篇博客文章，用于测试博客系统的各项功能。"
-    },
-    {
-      "id": "my-new-article",
-      "title": "我的新文章",
-      "date": "2025-01-15",
-      "tags": ["aicourse"],
-      "file": "my-new-article.md",
-      "excerpt": "这是文章摘要..."
     }
   ],
   "tags": {
