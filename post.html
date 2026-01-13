@@ -214,6 +214,12 @@
             return html;
         }
 
+        // 修复图片路径：将 ../images/ 转换为 images/
+        function fixImagePaths(markdown) {
+            // 匹配 Markdown 图片语法 ![alt](../images/...)
+            return markdown.replace(/!\[([^\]]*)\]\(\.\.\/images\//g, '![$1](images/');
+        }
+
         // 渲染文章
         function renderPost(info, markdown) {
             // 更新页面标题
@@ -246,7 +252,10 @@
             while (startIndex < lines.length && (lines[startIndex].trim() === '' || lines[startIndex].startsWith('>'))) {
                 startIndex++;
             }
-            const contentMarkdown = lines.slice(startIndex).join('\n');
+            let contentMarkdown = lines.slice(startIndex).join('\n');
+            
+            // 修复图片路径
+            contentMarkdown = fixImagePaths(contentMarkdown);
 
             // 保护数学公式，防止被 marked.js 破坏
             const { text: protectedMarkdown, mathBlocks } = protectMath(contentMarkdown);
