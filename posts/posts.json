@@ -1,6 +1,14 @@
 {
   "posts": [
     {
+      "id": "MCP-installation-tutorial-for-Cherry-Studio",
+      "title": "Cherry Studio的基础知识之MCP安装教程",
+      "date": "2026-01-13",
+      "tags": ["aicourse"],
+      "file": "MCP-installation-tutorial-for-Cherry-Studio.md",
+      "excerpt": "Cherry Studio的基础知识之MCP安装教程"
+    },
+    {
       "id": "my-new-article",
       "title": "我的新文章",
       "date": "2025-01-15",
@@ -97,7 +105,7 @@
     "aicourse": {
       "name": "AI教程",
       "color": "#ff6600",
-      "count": 1
+      "count": 2
     }
   }
 }
