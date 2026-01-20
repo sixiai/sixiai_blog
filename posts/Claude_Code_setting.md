@@ -4,7 +4,7 @@
 
 从官网下载安装：https://nodejs.org/（选择 LTS 版本）
 
-```
+```shell
 # 或使用 winget 安装
 winget install OpenJS.NodeJS.LTS
 
@@ -14,13 +14,13 @@ node -v; npm -v
 
 ### 2. 安装 Claude Code
 
-```
+```shell
 npm install -g @anthropic-ai/claude-code
 ```
 
 ### 3. 更新 Claude Code
 
-```
+```shell
 # 更新到最新版本
 npm update -g @anthropic-ai/claude-code
 
@@ -38,7 +38,7 @@ claude --version
 
 新版 Claude Code 客户端会先检测环境变量，如果没有设置环境变量则不会读取配置文件。请先设置以下环境变量：
 
-```
+```shell
 # PowerShell 临时设置（当前会话有效）
 $env:ANTHROPIC_BASE_URL = "https://api.lclaitech.com"
 $env:ANTHROPIC_AUTH_TOKEN = "sk-你的API密钥"
@@ -73,7 +73,7 @@ setx CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC "1"
 
 📄 配置文件内容
 
-```
+```shell
 {
   "env": {
     "ANTHROPIC_AUTH_TOKEN": "sk-你的API密钥",
