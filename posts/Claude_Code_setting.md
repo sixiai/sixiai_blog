@@ -1,4 +1,4 @@
-## 🤖 Claude Code 配置 (Windows)
+## Claude Code 配置 (Windows)
 
 ### 1. 安装 Node.js
 
@@ -84,5 +84,6 @@ setx CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC "1"
   "model": "opus"
 }
 ```
+
 
 
