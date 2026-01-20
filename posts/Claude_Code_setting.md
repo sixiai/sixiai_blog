@@ -2,7 +2,7 @@
 
 ### 1. 安装 Node.js
 
-从官网下载安装：https://nodejs.org/（选择 LTS 版本）
+从官网下载安装：（选择 LTS 版本）https://nodejs.org/
 
 ```shell
 # 或使用 winget 安装
@@ -84,4 +84,5 @@ setx CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC "1"
   "model": "opus"
 }
 ```
+
 
