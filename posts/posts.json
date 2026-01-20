@@ -1,6 +1,14 @@
 {
   "posts": [
     {
+      "id": "Claude_Code_setting",
+      "title": "Claude Code安装教程",
+      "date": "2026-01-20",
+      "tags": ["aicourse"],
+      "file": "Claude_Code_setting.md",
+      "excerpt": "Claude Code安装教程"
+    },
+    {
       "id": "MCP-installation-tutorial-for-Cherry-Studio",
       "title": "Cherry Studio的基础知识之MCP安装教程",
       "date": "2026-01-13",
