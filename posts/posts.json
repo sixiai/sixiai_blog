@@ -1,11 +1,11 @@
 {
   "posts": [
     {
-      "id": "Claude_Code_setting",
+      "id": "Claude-Code-setting",
       "title": "Claude Code安装教程",
       "date": "2026-01-20",
       "tags": ["aicourse"],
-      "file": "Claude_Code_setting.md",
+      "file": "Claude-Code-setting.md",
       "excerpt": "Claude Code安装教程"
     },
     {
