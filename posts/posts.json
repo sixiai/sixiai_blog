@@ -1,6 +1,14 @@
 {
   "posts": [
     {
+      "id": "AUV-Model",
+      "title": "水下机器人水平面3自由度简化模型及辨识",
+      "date": "2026-01-20",
+      "tags": ["knowledge"],
+      "file": "AUV-Model.md",
+      "excerpt": "水下机器人水平面3自由度简化模型及辨识"
+    },
+    {
       "id": "Claude-Code-setting",
       "title": "Claude Code安装教程",
       "date": "2026-01-20",
